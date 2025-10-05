@@ -11,7 +11,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd auth-service && npm install && npx nest build
+    buildCommand: cd auth-service && npm install --include=dev && npx nest build
     startCommand: cd auth-service && node dist/main
     envVars:
       - key: NODE_ENV
@@ -47,7 +47,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd solicitudes-service && npm install && npx nest build
+    buildCommand: cd solicitudes-service && npm install --include=dev && npx nest build
     startCommand: cd solicitudes-service && node dist/main
     envVars:
       - key: NODE_ENV
@@ -85,7 +85,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd pagos-service && npm install && npx nest build
+    buildCommand: cd pagos-service && npm install --include=dev && npx nest build
     startCommand: cd pagos-service && node dist/main
     envVars:
       - key: NODE_ENV
@@ -121,7 +121,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd inventario-service && npm install && npx nest build
+    buildCommand: cd inventario-service && npm install --include=dev && npx nest build
     startCommand: cd inventario-service && node dist/main
     envVars:
       - key: NODE_ENV
@@ -155,7 +155,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd api-gateway && npm install && npx nest build
+    buildCommand: cd api-gateway && npm install --include=dev && npx nest build
     startCommand: cd api-gateway && node dist/main
     envVars:
       - key: NODE_ENV
