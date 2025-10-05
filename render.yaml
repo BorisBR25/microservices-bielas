@@ -1,0 +1,172 @@
+databases:
+  - name: bielas-db
+    databaseName: bielas_production
+    user: bielas_user
+    plan: free
+
+services:
+  # Auth Service
+  - type: web
+    name: auth-service
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd auth-service && npm install && npm run build
+    startCommand: cd auth-service && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: bielas-db
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: bielas-db
+          property: port
+      - key: DATABASE_USER
+        fromDatabase:
+          name: bielas-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: bielas-db
+          property: password
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: bielas-db
+          property: database
+      - key: JWT_SECRET
+        generateValue: true
+
+  # Solicitudes Service
+  - type: web
+    name: solicitudes-service
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd solicitudes-service && npm install && npm run build
+    startCommand: cd solicitudes-service && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3002
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: bielas-db
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: bielas-db
+          property: port
+      - key: DATABASE_USER
+        fromDatabase:
+          name: bielas-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: bielas-db
+          property: password
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: bielas-db
+          property: database
+      - key: PAGOS_SERVICE_URL
+        value: https://pagos-service.onrender.com
+      - key: INVENTARIO_SERVICE_URL
+        value: https://inventario-service.onrender.com
+
+  # Pagos Service
+  - type: web
+    name: pagos-service
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd pagos-service && npm install && npm run build
+    startCommand: cd pagos-service && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3003
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: bielas-db
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: bielas-db
+          property: port
+      - key: DATABASE_USER
+        fromDatabase:
+          name: bielas-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: bielas-db
+          property: password
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: bielas-db
+          property: database
+      - key: INVENTARIO_SERVICE_URL
+        value: https://inventario-service.onrender.com
+
+  # Inventario Service
+  - type: web
+    name: inventario-service
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd inventario-service && npm install && npm run build
+    startCommand: cd inventario-service && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3004
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: bielas-db
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: bielas-db
+          property: port
+      - key: DATABASE_USER
+        fromDatabase:
+          name: bielas-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: bielas-db
+          property: password
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: bielas-db
+          property: database
+
+  # API Gateway
+  - type: web
+    name: api-gateway
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd api-gateway && npm install && npm run build
+    startCommand: cd api-gateway && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: AUTH_SERVICE_URL
+        value: https://auth-service.onrender.com
+      - key: SOLICITUDES_SERVICE_URL
+        value: https://solicitudes-service.onrender.com
+      - key: PAGOS_SERVICE_URL
+        value: https://pagos-service.onrender.com
+      - key: INVENTARIO_SERVICE_URL
+        value: https://inventario-service.onrender.com

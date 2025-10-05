@@ -30,13 +30,15 @@ El sistema está compuesto por 5 microservicios independientes:
 
 ## 🚀 Instalación y Ejecución
 
-### 1. Clonar o descargar el proyecto
+### Opción 1: Desarrollo Local con Docker
+
+#### 1. Clonar o descargar el proyecto
 
 ```bash
 cd microservices-bielas
 ```
 
-### 2. Levantar todos los servicios
+#### 2. Levantar todos los servicios
 
 ```bash
 docker-compose up --build
@@ -61,11 +63,43 @@ Espera aproximadamente 30-60 segundos para que todos los servicios inicien. Ver�
 📚 Documentación Swagger: http://localhost:3000/api/docs
 ```
 
-### 4. Acceder a la documentación Swagger
+#### 4. Acceder a la documentación Swagger
 
 Abre tu navegador en: **http://localhost:3000/api/docs**
 
 Aquí encontrarás toda la documentación interactiva de la API.
+
+---
+
+### Opción 2: Deploy en Render (Producción)
+
+Para desplegar el sistema completo en Render con PostgreSQL gratuito, consulta la guía detallada:
+
+📖 **[GUÍA DE DEPLOYMENT EN RENDER](./RENDER_DEPLOYMENT.md)**
+
+**Características del deployment en Render:**
+- ✅ PostgreSQL gratuito (1GB)
+- ✅ 5 servicios web en plan free
+- ✅ SSL/TLS automático
+- ✅ URLs públicas para compartir Swagger
+- ✅ Auto-deploy desde GitHub
+- ✅ Logs y monitoreo incluidos
+
+**Acceso rápido:**
+```bash
+# 1. Sube el código a GitHub
+git add .
+git commit -m "Deploy a Render"
+git push origin main
+
+# 2. Ve a https://render.com
+# 3. New + → Blueprint
+# 4. Conecta tu repo (render.yaml se aplica automáticamente)
+```
+
+**Tu Swagger quedará en**: `https://tu-api-gateway.onrender.com/api/docs`
+
+---
 
 ## 🧪 Probar el Flujo Completo (MANUAL)
 

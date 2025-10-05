@@ -1,10 +1,30 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+  });
+
+  // Middleware para logging de todas las peticiones HTTP
+  app.use((req, res, next) => {
+    const logger = new Logger('HTTP');
+    const { method, originalUrl, ip } = req;
+    const userAgent = req.get('user-agent') || '';
+
+    logger.log(`➡️  ${method} ${originalUrl} - ${ip} - ${userAgent}`);
+
+    const startTime = Date.now();
+    res.on('finish', () => {
+      const { statusCode } = res;
+      const duration = Date.now() - startTime;
+      logger.log(`⬅️  ${method} ${originalUrl} - ${statusCode} - ${duration}ms`);
+    });
+
+    next();
+  });
 
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
