@@ -11,8 +11,9 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: cd auth-service && npm install && npm run build
-    startCommand: cd auth-service && npm run start:prod
+    rootDirectory: auth-service
+    buildCommand: npm install && npx nest build
+    startCommand: node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -47,8 +48,9 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: cd solicitudes-service && npm install && npm run build
-    startCommand: cd solicitudes-service && npm run start:prod
+    rootDirectory: solicitudes-service
+    buildCommand: npm install && npx nest build
+    startCommand: node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -85,8 +87,9 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: cd pagos-service && npm install && npm run build
-    startCommand: cd pagos-service && npm run start:prod
+    rootDirectory: pagos-service
+    buildCommand: npm install && npx nest build
+    startCommand: node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -121,8 +124,9 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: cd inventario-service && npm install && npm run build
-    startCommand: cd inventario-service && npm run start:prod
+    rootDirectory: inventario-service
+    buildCommand: npm install && npx nest build
+    startCommand: node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -155,8 +159,9 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: cd api-gateway && npm install && npm run build
-    startCommand: cd api-gateway && npm run start:prod
+    rootDirectory: api-gateway
+    buildCommand: npm install && npx nest build
+    startCommand: node dist/main
     envVars:
       - key: NODE_ENV
         value: production
