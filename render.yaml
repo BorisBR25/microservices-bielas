@@ -18,26 +18,10 @@ services:
         value: production
       - key: PORT
         value: 3001
-      - key: DATABASE_HOST
+      - key: DATABASE_URL
         fromDatabase:
           name: bielas-db
-          property: host
-      - key: DATABASE_PORT
-        fromDatabase:
-          name: bielas-db
-          property: port
-      - key: DATABASE_USER
-        fromDatabase:
-          name: bielas-db
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: bielas-db
-          property: password
-      - key: DATABASE_NAME
-        fromDatabase:
-          name: bielas-db
-          property: database
+          property: connectionString
       - key: JWT_SECRET
         generateValue: true
 
@@ -54,26 +38,10 @@ services:
         value: production
       - key: PORT
         value: 3002
-      - key: DATABASE_HOST
+      - key: DATABASE_URL
         fromDatabase:
           name: bielas-db
-          property: host
-      - key: DATABASE_PORT
-        fromDatabase:
-          name: bielas-db
-          property: port
-      - key: DATABASE_USER
-        fromDatabase:
-          name: bielas-db
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: bielas-db
-          property: password
-      - key: DATABASE_NAME
-        fromDatabase:
-          name: bielas-db
-          property: database
+          property: connectionString
       - key: PAGOS_SERVICE_URL
         value: https://pagos-service.onrender.com
       - key: INVENTARIO_SERVICE_URL
@@ -92,26 +60,10 @@ services:
         value: production
       - key: PORT
         value: 3003
-      - key: DATABASE_HOST
+      - key: DATABASE_URL
         fromDatabase:
           name: bielas-db
-          property: host
-      - key: DATABASE_PORT
-        fromDatabase:
-          name: bielas-db
-          property: port
-      - key: DATABASE_USER
-        fromDatabase:
-          name: bielas-db
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: bielas-db
-          property: password
-      - key: DATABASE_NAME
-        fromDatabase:
-          name: bielas-db
-          property: database
+          property: connectionString
       - key: INVENTARIO_SERVICE_URL
         value: https://inventario-service.onrender.com
 
@@ -128,26 +80,10 @@ services:
         value: production
       - key: PORT
         value: 3004
-      - key: DATABASE_HOST
+      - key: DATABASE_URL
         fromDatabase:
           name: bielas-db
-          property: host
-      - key: DATABASE_PORT
-        fromDatabase:
-          name: bielas-db
-          property: port
-      - key: DATABASE_USER
-        fromDatabase:
-          name: bielas-db
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: bielas-db
-          property: password
-      - key: DATABASE_NAME
-        fromDatabase:
-          name: bielas-db
-          property: database
+          property: connectionString
 
   # API Gateway
   - type: web
