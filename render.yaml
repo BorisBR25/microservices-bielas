@@ -8,12 +8,11 @@ services:
   # Auth Service
   - type: web
     name: auth-service
-    env: node
+    runtime: node
     region: oregon
     plan: free
-    rootDirectory: auth-service
-    buildCommand: npm install && npx nest build
-    startCommand: node dist/main
+    buildCommand: cd auth-service && npm install && npx nest build
+    startCommand: cd auth-service && node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -45,12 +44,11 @@ services:
   # Solicitudes Service
   - type: web
     name: solicitudes-service
-    env: node
+    runtime: node
     region: oregon
     plan: free
-    rootDirectory: solicitudes-service
-    buildCommand: npm install && npx nest build
-    startCommand: node dist/main
+    buildCommand: cd solicitudes-service && npm install && npx nest build
+    startCommand: cd solicitudes-service && node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -84,12 +82,11 @@ services:
   # Pagos Service
   - type: web
     name: pagos-service
-    env: node
+    runtime: node
     region: oregon
     plan: free
-    rootDirectory: pagos-service
-    buildCommand: npm install && npx nest build
-    startCommand: node dist/main
+    buildCommand: cd pagos-service && npm install && npx nest build
+    startCommand: cd pagos-service && node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -121,12 +118,11 @@ services:
   # Inventario Service
   - type: web
     name: inventario-service
-    env: node
+    runtime: node
     region: oregon
     plan: free
-    rootDirectory: inventario-service
-    buildCommand: npm install && npx nest build
-    startCommand: node dist/main
+    buildCommand: cd inventario-service && npm install && npx nest build
+    startCommand: cd inventario-service && node dist/main
     envVars:
       - key: NODE_ENV
         value: production
@@ -156,12 +152,11 @@ services:
   # API Gateway
   - type: web
     name: api-gateway
-    env: node
+    runtime: node
     region: oregon
     plan: free
-    rootDirectory: api-gateway
-    buildCommand: npm install && npx nest build
-    startCommand: node dist/main
+    buildCommand: cd api-gateway && npm install && npx nest build
+    startCommand: cd api-gateway && node dist/main
     envVars:
       - key: NODE_ENV
         value: production
